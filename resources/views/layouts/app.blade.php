@@ -32,9 +32,61 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-                      
-                    </ul>
+                    @guest
+                    @if (Route::has('login'))
+                    
+                        
+                    @endif
+                @else
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Actividades
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li><a class="dropdown-item" href="{{route('actividad.index')}}">Ver Actividades</a></li>
+                          <li><a class="dropdown-item" href="{{route('actividad.create')}}">Crear Nueva Actividad</a></li>
+                        </ul>
+                      </li>
+                </ul>
+
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarMO" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Mano de Obra
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarMO">
+                          <li><a class="dropdown-item" href="#">Ver Mano de Obra</a></li>
+                          <li><a class="dropdown-item" href="#">Crear Nueva Mano de Obra</a></li>
+                        </ul>
+                      </li>
+                </ul>
+
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarMA" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Materiales
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarMA">
+                          <li><a class="dropdown-item" href="#">Ver Materiales</a></li>
+                          <li><a class="dropdown-item" href="#">Crear Material</a></li>
+                        </ul>
+                      </li>
+                </ul>
+
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarPO" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Proyectos
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarPO">
+                          <li><a class="dropdown-item" href="#">Ver Proyectos</a></li>
+                          <li><a class="dropdown-item" href="#">Crear Proyectos</a></li>
+                        </ul>
+                      </li>
+                </ul>
+                @endguest
+                   
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
@@ -69,7 +121,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-5">
             @yield('content')
         </main>
     </div>

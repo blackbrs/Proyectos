@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ActividadController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,8 +21,15 @@ Auth::routes();
 
 
 Route::middleware('auth')->group(function(){
-    Route::get('/', function () {
-        return view('home');
+    Route::get('/', function () {return view('home');});
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::prefix('Actividad')->group(function () {
+        Route::get('/', [ActividadController::class, 'index'])->name('actividad.index');
+        Route::get('/create', [ActividadController::class, 'create'])->name('actividad.create');
+        Route::post('/store', [ActividadController::class, 'store'])->name('actividad.store');
+        Route::get('/{actividad}/edit', [ActividadController::class, 'edit'])->name('actividad.edit');
+        Route::put('/{actividad}/update', [ActividadController::class, 'update'])->name('actividad.update');
+
+        
     });
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
